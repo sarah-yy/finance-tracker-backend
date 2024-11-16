@@ -1,5 +1,6 @@
 import cors from "cors";
 import express from "express";
+import routes from "./routes";
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Insert routes here
+app.use("/v1", routes);
 
 app.get("/ping", (req, res) => {
   res.json({ message: "Application up and running!" });
