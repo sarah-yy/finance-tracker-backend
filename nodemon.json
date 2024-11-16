@@ -1,0 +1,6 @@
+{
+	"watch": ["build"],
+	"ext": ".js",
+	"ignore": [],
+	"exec": "node --experimental-specifier-resolution=node build/index.js"
+}

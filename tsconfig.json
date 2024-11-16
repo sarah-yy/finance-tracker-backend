@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"rootDir": "src",
+		"outDir": "build",
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
+		"moduleResolution": "Bundler",
+		"allowJs": false,
+		"lib": ["es2015"],
+		"module": "esnext",
+		"noImplicitAny": true
+	}
+}
