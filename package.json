@@ -10,7 +10,7 @@
   "scripts": {
     "run:init": "node --experimental-specifier-resolution=node build/scripts/init_psql_extensions && node --experimental-specifier-resolution=node build/scripts/init_accounts",
     "start": "npx nodemon",
-    "build": "yarn run eslint src/ && tsc --outDir build",
+    "build": "yarn run eslint src/ && tsc --outDir build && tsc-alias",
     "dev": "yarn build && yarn start"
   },
   "dependencies": {
@@ -35,6 +35,8 @@
     "nodemon": "^3.1.0",
     "ts-node": "^10.9.2",
     "tsc": "^2.0.4",
+    "tsc-alias": "^1.8.10",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.4.3"
   }
 }

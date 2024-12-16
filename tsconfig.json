@@ -9,11 +9,17 @@
 		"lib": ["es2015"],
 		"module": "esnext",
 		"noImplicitAny": true,
+		"baseUrl": "./src",
 		"paths": {
-			"@fin-tracker/controllers": ["./src/controllers/"],
-			"@fin-tracker/models": ["./src/models/"],
-			"@fin-tracker/services": ["./src/services/"],
-			"@fin-tracker/util": ["./src/util/"],
-		},
-	}
+			"@fin-tracker/controllers/*": ["controllers/*"],
+			"@fin-tracker/models/*": ["models/*"],
+			"@fin-tracker/services/*": ["services/*"],
+			"@fin-tracker/util/*": ["util/*"]
+		}
+	},
+	"include": ["src/**/*"],
+	"tsc-alias": {
+    "resolveFullPaths": true,
+    "verbose": false
+  }
 }

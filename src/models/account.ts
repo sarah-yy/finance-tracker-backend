@@ -1,4 +1,4 @@
-import { Query, Validate } from "@fin-tracker/util";
+import { Query, Validate } from "@fin-tracker/util/index";
 import { ColumnStruct, ConstraintStruct } from "./common";
 
 export interface Account {

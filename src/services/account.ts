@@ -1,6 +1,6 @@
 import pool from "../config/database";
-import { Account } from "@fin-tracker/models";
-import { Query } from "@fin-tracker/util";
+import * as Account from "@fin-tracker/models/account";
+import * as Query from "@fin-tracker/util/query";
 
 const getAllAccounts = async (): Promise<Account.Account[]> => {
   const { rows } = await pool.query("SELECT * FROM accounts");
