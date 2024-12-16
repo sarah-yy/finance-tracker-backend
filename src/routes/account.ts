@@ -1,8 +1,10 @@
 import express from "express";
-import { getAccounts } from "../controllers/account";
+import { Account } from "@fin-tracker/controllers";
 
 const router = express.Router();
 
-router.get("/account", getAccounts);
+router.get("/account/list", Account.getAccounts);
+router.post("/register", Account.registerAccount);
+
 
 export default router;

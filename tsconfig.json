@@ -8,6 +8,12 @@
 		"allowJs": false,
 		"lib": ["es2015"],
 		"module": "esnext",
-		"noImplicitAny": true
+		"noImplicitAny": true,
+		"paths": {
+			"@fin-tracker/controllers": ["./src/controllers/"],
+			"@fin-tracker/models": ["./src/models/"],
+			"@fin-tracker/services": ["./src/services/"],
+			"@fin-tracker/util": ["./src/util/"],
+		},
 	}
 }

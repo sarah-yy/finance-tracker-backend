@@ -1,3 +1,4 @@
+import { Query, Validate } from "@fin-tracker/util";
 import { ColumnStruct, ConstraintStruct } from "./common";
 
 export interface Account {
@@ -6,8 +7,10 @@ export interface Account {
   passwordHash: string;
   email: string;
   createdAt: string;
+  isAdmin: boolean;
 }
 
+// PSQL Table Values
 export const SEQUENCE_NAME = "account_id";
 
 export const TABLE_NAME = "accounts";
@@ -43,3 +46,38 @@ export const TABLE_COLUMNS: ColumnStruct[] = [{
 }];
 
 export const CONSTRAINT_DEFS: ConstraintStruct[] = [];
+
+// API Request Structs
+export interface RegisterAccountReq {
+  username: string;
+  password: string;
+  email: string;
+}
+
+export interface SubmitRegisterObj {
+  account_username: string;
+  password_hash: string;
+  email: string;
+}
+
+export const registerValidateArr: Validate.ValidateFieldArr = [{
+  name: "username",
+  type: Validate.ValueType.String,
+  required: true,
+  minLength: 3,
+  maxLength: 50,
+}, {
+  name: "password",
+  type: Validate.ValueType.String,
+  required: true,
+  minLength: 3,
+  maxLength: 50,
+}, {
+  name: "email",
+  type: Validate.ValueType.Email,
+  required: true,
+}];
+
+export type RegisterAccountOutcome = Query.QueryResult<Account> | Query.QueryResult<string>;
+
+export const accountReturnFields: string[] = TABLE_COLUMNS.map((value: ColumnStruct) => value.name);
