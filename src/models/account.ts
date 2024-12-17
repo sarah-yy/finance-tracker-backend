@@ -48,6 +48,8 @@ export const TABLE_COLUMNS: ColumnStruct[] = [{
 export const CONSTRAINT_DEFS: ConstraintStruct[] = [];
 
 // API Request Structs
+
+// Register Account Structs
 export interface RegisterAccountReq {
   username: string;
   password: string;
@@ -79,5 +81,26 @@ export const registerValidateArr: Validate.ValidateFieldArr = [{
 }];
 
 export type RegisterAccountOutcome = Query.QueryResult<Account> | Query.QueryResult<string>;
+
+
+// Login Account Structs
+export interface LoginAccountReq {
+  username: string;
+  password: string;
+}
+
+export const loginValidateArr: Validate.ValidateFieldArr = [{
+  name: "username",
+  type: Validate.ValueType.String,
+  required: true,
+  minLength: 3,
+  maxLength: 50,
+}, {
+  name: "password",
+  type: Validate.ValueType.String,
+  required: true,
+  minLength: 3,
+  maxLength: 50,
+}];
 
 export const accountReturnFields: string[] = TABLE_COLUMNS.map((value: ColumnStruct) => value.name);
