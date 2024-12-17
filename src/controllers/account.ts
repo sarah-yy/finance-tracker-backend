@@ -79,3 +79,14 @@ export const logIntoAccount = async (req: Request, res: Response): Promise<Respo
     return res.status(400).json(Query.getErrorResult(error.message ?? "Failed to create account"));
   }
 };
+
+export const refreshAccessToken = async (req: any, res: Response): Promise<Response<string>> => {
+  if (!req.user) {
+    return res.status(400).json(Query.getErrorResult("No user info found."));
+  }
+
+  const refreshedToken = jwt.sign({ id: req.user.accountUsername, isAdmin: req.user.isAdmin }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRATION,
+  });
+  return res.status(200).json(Query.getSuccessResult(refreshedToken));
+};
