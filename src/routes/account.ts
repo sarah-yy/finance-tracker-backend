@@ -12,7 +12,7 @@ const Routes: Types.SimpleMap<string> = {
   Edit: "/edit",
 };
 
-router.get(Routes.List, Account.getAccounts);
+router.get(Routes.List, Auth.authenticateToken, Auth.authorizeAdmin, Account.getAccounts);
 router.post(Routes.Register, Account.registerAccount);
 router.post(Routes.Login, Account.logIntoAccount);
 router.post(Routes.Refresh, Auth.authenticateToken, Account.refreshAccessToken);

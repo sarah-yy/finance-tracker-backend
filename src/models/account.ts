@@ -43,6 +43,16 @@ export const TABLE_COLUMNS: ColumnStruct[] = [{
   type: "BOOLEAN",
   notNull: true,
   default: "FALSE",
+}, {
+  name: "is_blacklisted",
+  type: "BOOLEAN",
+  notNull: true,
+  default: "FALSE",
+}, {
+  name: "is_deleted",
+  type: "BOOLEAN",
+  notNull: true,
+  default: "FALSE",
 }];
 
 export const CONSTRAINT_DEFS: ConstraintStruct[] = [];
