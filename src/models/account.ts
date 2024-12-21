@@ -47,7 +47,8 @@ export const TABLE_COLUMNS: ColumnStruct[] = [{
 
 export const CONSTRAINT_DEFS: ConstraintStruct[] = [];
 
-// API Request Structs
+
+// API REQUEST STRUCTS
 
 // Register Account Structs
 export interface RegisterAccountReq {
@@ -102,5 +103,27 @@ export const loginValidateArr: Validate.ValidateFieldArr = [{
   minLength: 3,
   maxLength: 50,
 }];
+
+
+// Edit Account Structs
+export interface EditAccountReq extends RegisterAccountReq {
+  accountId: string;
+}
+
+export interface SubmitEditObj extends SubmitRegisterObj {
+  account_id: string;
+}
+
+export const editValidateArr = [
+  ...registerValidateArr,
+  {
+    name: "account_id",
+    type: Validate.ValueType.String,
+    required: true,
+  },
+];
+
+export type EditAccountOutcome = Query.QueryResult<Account> | Query.QueryResult<string>;
+
 
 export const accountReturnFields: string[] = TABLE_COLUMNS.map((value: ColumnStruct) => value.name);

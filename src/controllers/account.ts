@@ -90,3 +90,29 @@ export const refreshAccessToken = async (req: any, res: Response): Promise<Respo
   });
   return res.status(200).json(Query.getSuccessResult(refreshedToken));
 };
+
+export const editAccount = async (req: Request, res: Response) => {
+  if (!Validate.isObject(req.body)) {
+    return res.status(400).json(Query.getErrorResult("Form parameters not an object, pls submit an object."));
+  }
+
+  const validateError = Validate.validateBodyObj(req.body, Account.editValidateArr);
+  if (validateError) {
+    return res.status(400).json(Query.getErrorResult(validateError));
+  }
+
+  const { accountId, email, username, password } = req.body as Account.EditAccountReq;
+  const hashedPassword = await bcryptjs.hash(password, 10);
+  try {
+    const newAccount = await AccountService.editAccountDetails({
+      account_id: accountId,
+      account_username: username,
+      password_hash: hashedPassword,
+      email,
+    });
+    return res.status(200).json(Query.getSuccessResult<Account.Account>(newAccount));
+  } catch (err) {
+    const error = err as Error;
+    return res.status(400).json(Query.getErrorResult(error.message ?? "Failed to edit account"));
+  }
+};
