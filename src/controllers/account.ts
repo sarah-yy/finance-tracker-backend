@@ -29,7 +29,7 @@ const getAccountById = async (id: string, includeInactive: boolean = false): Pro
     const account = await AccountService.getAccountById(id, includeInactive);
     return account;
   } catch (err) {
-    return undefined
+    return undefined;
   }
 };
 
