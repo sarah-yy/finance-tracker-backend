@@ -1,6 +1,6 @@
 import { SimpleMap } from "./types";
 
-type InputValue = string | number;
+type InputValue = string | number | boolean;
 
 export interface SelectParams {
   tableName: string;
@@ -40,7 +40,7 @@ export const getCreateEntryQuery = (params: EntryParams): string => {
   const listOfValues: string[] = [];
   Object.entries(params.values).forEach(([field, value]: [string, InputValue]) => {
     listOfFields.push(field);
-    listOfValues.push(typeof value === "string" ? `'${value}'` : `${value}`);
+    listOfValues.push(formatValueForSql(value));
   });
   const fieldsListStr = listOfFields.join(", ");
 
@@ -63,7 +63,7 @@ export interface UpdateEntryParams extends EntryParams {
  */
 export const getUpdateEntryQuery = (params: UpdateEntryParams) => {
   const setValueStr = Object.entries(params.values).reduce((prev: string[], [field, value]: [string, InputValue]) => {
-    prev.push(`${field} = ${typeof value === "string" ? `'${value}'` : `${value}`}`);
+    prev.push(`${field} = ${formatValueForSql(value)}`);
     return prev;
   }, []);
   return `
@@ -107,4 +107,22 @@ export const getErrorResult = <T = string>(body: T): QueryResult<T> => {
     status: QueryStatus.Error,
     body,
   };
+};
+
+
+// Util Functions
+/**
+ * Formats values for SQL query
+ * @param value value to format
+ * @returns formatted value (string)
+ */
+const formatValueForSql = (value: InputValue): string => {
+  switch (typeof value) {
+    case "boolean":
+      return value ? "TRUE" : "FALSE";
+    case "string":
+      return `'${value}'`;
+    default:
+      return `${value}`;
+  }
 };

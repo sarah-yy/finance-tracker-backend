@@ -8,6 +8,8 @@ export interface Account {
   email: string;
   createdAt: string;
   isAdmin: boolean;
+  isDeleted: boolean;
+  isBlacklisted: boolean;
 }
 
 // PSQL Table Values
@@ -60,6 +62,24 @@ export const CONSTRAINT_DEFS: ConstraintStruct[] = [];
 
 // API REQUEST STRUCTS
 
+// Account Id Structs
+interface AccountIdBase {
+  accountId: string;
+}
+
+interface SubmitAccountIdBaseObj {
+  account_id: string;
+}
+
+const accountIdBaseValidateArr: Validate.ValidateFieldArr = [{
+  name: "account_id",
+  type: Validate.ValueType.String,
+  required: true,
+}];
+
+export type BaseAccountOutcome = Query.QueryResult<Account> | Query.QueryResult<string>;
+
+
 // Register Account Structs
 export interface RegisterAccountReq {
   username: string;
@@ -91,7 +111,7 @@ export const registerValidateArr: Validate.ValidateFieldArr = [{
   required: true,
 }];
 
-export type RegisterAccountOutcome = Query.QueryResult<Account> | Query.QueryResult<string>;
+export type RegisterAccountOutcome = BaseAccountOutcome;
 
 
 // Login Account Structs
@@ -116,7 +136,7 @@ export const loginValidateArr: Validate.ValidateFieldArr = [{
 
 
 // Edit Account Structs
-export interface EditAccountReq extends RegisterAccountReq {
+export interface EditAccountReq extends RegisterAccountReq, AccountIdBase {
   accountId: string;
 }
 
@@ -126,14 +146,23 @@ export interface SubmitEditObj extends SubmitRegisterObj {
 
 export const editValidateArr = [
   ...registerValidateArr,
-  {
-    name: "account_id",
-    type: Validate.ValueType.String,
-    required: true,
-  },
+  ...accountIdBaseValidateArr,
 ];
 
-export type EditAccountOutcome = Query.QueryResult<Account> | Query.QueryResult<string>;
+export type EditAccountOutcome = BaseAccountOutcome;
 
 
+// Delete Account
+export type ToggleDeleteReq = AccountIdBase;
+
+export type SubmitToggleDeleteObj = SubmitAccountIdBaseObj;
+
+export const toggleDeleteValidateArr: Validate.ValidateFieldArr = [
+  ...accountIdBaseValidateArr,
+];
+
+export type ToggleDeleteAccountOutcome = BaseAccountOutcome;
+
+
+// Return constants
 export const accountReturnFields: string[] = TABLE_COLUMNS.map((value: ColumnStruct) => value.name);

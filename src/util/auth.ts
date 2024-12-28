@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import { getErrorResult } from "./query";
 
 interface JwtDecodedAccount {
-  username: string;
+  id: string;
   isAdmin: boolean;
 }
 
@@ -25,7 +25,7 @@ export const authenticateToken = (req: any, res: Response, next: NextFunction) =
 
 export const authorizeAdmin = (req: any, res: Response, next: NextFunction) => {
   if (!req.user.isAdmin) {
-    return res.status(403).json(getErrorResult("You are unauthorized to carry out this action. Please contact an admin for assistance."));
+    return res.status(403).json(getErrorResult("You are not authorized to carry out this action."));
   }
   next();
 };
