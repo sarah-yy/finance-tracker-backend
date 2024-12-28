@@ -79,7 +79,6 @@ export const logIntoAccount = async (req: Request, res: Response): Promise<Respo
     // Include role in the token payload
     const token = jwt.sign({
       id: user.accountId,
-      isAdmin: user.isAdmin,
     }, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_EXPIRATION,
     });
@@ -98,7 +97,6 @@ export const refreshAccessToken = async (req: any, res: Response): Promise<Respo
 
   const refreshedToken = jwt.sign({
     id: req.user.id,
-    isAdmin: req.user.isAdmin,
   }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRATION,
   });

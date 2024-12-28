@@ -4,7 +4,6 @@ import { getErrorResult } from "./query";
 
 interface JwtDecodedAccount {
   id: string;
-  isAdmin: boolean;
 }
 
 export const authenticateToken = (req: any, res: Response, next: NextFunction) => {
@@ -21,11 +20,4 @@ export const authenticateToken = (req: any, res: Response, next: NextFunction) =
     req.user = user;
     next();
   });
-};
-
-export const authorizeAdmin = (req: any, res: Response, next: NextFunction) => {
-  if (!req.user.isAdmin) {
-    return res.status(403).json(getErrorResult("You are not authorized to carry out this action."));
-  }
-  next();
 };

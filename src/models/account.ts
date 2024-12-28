@@ -7,7 +7,6 @@ export interface Account {
   passwordHash: string;
   email: string;
   createdAt: string;
-  isAdmin: boolean;
   isDeleted: boolean;
   isBlacklisted: boolean;
 }
@@ -40,11 +39,6 @@ export const TABLE_COLUMNS: ColumnStruct[] = [{
   type: "TIMESTAMP",
   notNull: true,
   default: "NOW()",
-}, {
-  name: "is_admin",
-  type: "BOOLEAN",
-  notNull: true,
-  default: "FALSE",
 }, {
   name: "is_blacklisted",
   type: "BOOLEAN",

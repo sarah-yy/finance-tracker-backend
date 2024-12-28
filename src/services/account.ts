@@ -101,7 +101,6 @@ const processAccountData = (entry: any): Account.Account => {
     passwordHash: entry.password_hash,
     email: entry.email,
     createdAt: entry.created_at,
-    isAdmin: entry.is_admin,
     isDeleted: entry.is_deleted,
     isBlacklisted: entry.is_blacklisted,
   };
