@@ -25,7 +25,6 @@ const getAccountByUsername = async (username: string, includeInactive: boolean =
 };
 
 const getAccountById = async (id: string, includeInactive: boolean = false): Promise<Account.Account | undefined> => {
-  console.log("Test console.log");
   try {
     const account = await AccountService.getAccountById(id, includeInactive);
     return account;
