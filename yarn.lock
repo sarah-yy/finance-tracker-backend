@@ -1940,6 +1940,13 @@ v8-compile-cache-lib@^3.0.1:
   resolved "https://registry.yarnpkg.com/v8-compile-cache-lib/-/v8-compile-cache-lib-3.0.1.tgz#6336e8d71965cb3d35a1bbb7868445a7c05264bf"
   integrity sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==
 
+validate-ts-obj@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/validate-ts-obj/-/validate-ts-obj-0.0.2.tgz#8dfb961a61c5f88e5e64838f98aed23e4c1e4590"
+  integrity sha512-kUhQlZo9KSpFhHiqh8XyiBbyYNiSEkBdZAeDKVTLX8IAlYcIfAEt1INN7EMb0voXSxS1Q50otkEdKfqj3Qqbnw==
+  dependencies:
+    ts-node "^10.9.2"
+
 vary@^1, vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"

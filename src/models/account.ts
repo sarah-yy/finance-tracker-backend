@@ -1,4 +1,5 @@
-import { Query, Validate } from "@fin-tracker/util/index";
+import * as Validate from "validate-ts-obj/lib";
+import { Query } from "@fin-tracker/util/index";
 import { ColumnStruct, ConstraintStruct } from "./common";
 
 export interface Account {

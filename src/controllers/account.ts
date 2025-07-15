@@ -1,9 +1,10 @@
 import bcryptjs from "bcryptjs";
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import * as Validate from "validate-ts-obj/lib";
 import { Account as AccountService } from "@fin-tracker/services/index";
 import { Account } from "@fin-tracker/models/index";
-import { Query, Validate } from "@fin-tracker/util/index";
+import { Query } from "@fin-tracker/util/index";
 
 export const getAccounts = async (req: Request, res: Response) => {
   try {
