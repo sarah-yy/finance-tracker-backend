@@ -1,6 +1,6 @@
-import * as Validate from "validate-ts-obj/lib";
 import { Query } from "@fin-tracker/util/index";
 import { ColumnStruct, ConstraintStruct } from "./common";
+import { ValidateFieldArr, ValueType } from "validate-ts-obj";
 
 export interface Account {
   accountId: string;
@@ -66,9 +66,9 @@ interface SubmitAccountIdBaseObj {
   account_id: string;
 }
 
-const accountIdBaseValidateArr: Validate.ValidateFieldArr = [{
+const accountIdBaseValidateArr: ValidateFieldArr = [{
   name: "account_id",
-  type: Validate.ValueType.String,
+  type: ValueType.String,
   required: true,
 }];
 
@@ -88,21 +88,21 @@ export interface SubmitRegisterObj {
   email: string;
 }
 
-export const registerValidateArr: Validate.ValidateFieldArr = [{
+export const registerValidateArr: ValidateFieldArr = [{
   name: "username",
-  type: Validate.ValueType.String,
+  type: ValueType.String,
   required: true,
   minLength: 3,
   maxLength: 50,
 }, {
   name: "password",
-  type: Validate.ValueType.String,
+  type: ValueType.String,
   required: true,
   minLength: 3,
   maxLength: 50,
 }, {
   name: "email",
-  type: Validate.ValueType.Email,
+  type: ValueType.Email,
   required: true,
 }];
 
@@ -115,15 +115,15 @@ export interface LoginAccountReq {
   password: string;
 }
 
-export const loginValidateArr: Validate.ValidateFieldArr = [{
+export const loginValidateArr: ValidateFieldArr = [{
   name: "username",
-  type: Validate.ValueType.String,
+  type: ValueType.String,
   required: true,
   minLength: 3,
   maxLength: 50,
 }, {
   name: "password",
-  type: Validate.ValueType.String,
+  type: ValueType.String,
   required: true,
   minLength: 3,
   maxLength: 50,
@@ -152,7 +152,7 @@ export type ToggleDeleteReq = AccountIdBase;
 
 export type SubmitToggleDeleteObj = SubmitAccountIdBaseObj;
 
-export const toggleDeleteValidateArr: Validate.ValidateFieldArr = [
+export const toggleDeleteValidateArr: ValidateFieldArr = [
   ...accountIdBaseValidateArr,
 ];
 

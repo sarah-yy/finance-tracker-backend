@@ -1,10 +1,10 @@
+import { Account } from "@fin-tracker/models/index";
+import { Account as AccountService } from "@fin-tracker/services/index";
+import { Query } from "@fin-tracker/util/index";
 import bcryptjs from "bcryptjs";
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import * as Validate from "validate-ts-obj/lib";
-import { Account as AccountService } from "@fin-tracker/services/index";
-import { Account } from "@fin-tracker/models/index";
-import { Query } from "@fin-tracker/util/index";
+import { isObject, validateBodyObj } from "validate-ts-obj";
 
 export const getAccounts = async (req: Request, res: Response) => {
   try {
@@ -35,11 +35,11 @@ const getAccountById = async (id: string, includeInactive: boolean = false): Pro
 };
 
 export const registerAccount = async (req: Request, res: Response): Promise<Response<Account.RegisterAccountOutcome>> => {
-  if (!Validate.isObject(req.body)) {
+  if (!isObject(req.body)) {
     return res.status(400).json(Query.getErrorResult("Form parameters not an object, pls submit an object."));
   }
 
-  const validateError = Validate.validateBodyObj(req.body, Account.registerValidateArr);
+  const validateError = validateBodyObj(req.body, Account.registerValidateArr);
   if (validateError) {
     return res.status(400).json(Query.getErrorResult(validateError));
   }
@@ -60,11 +60,11 @@ export const registerAccount = async (req: Request, res: Response): Promise<Resp
 };
 
 export const logIntoAccount = async (req: Request, res: Response): Promise<Response<string>> => {
-  if (!Validate.isObject(req.body)) {
+  if (!isObject(req.body)) {
     return res.status(400).json(Query.getErrorResult("Form parameters not an object, pls submit an object."));
   }
 
-  const validateError = Validate.validateBodyObj(req.body, Account.loginValidateArr);
+  const validateError = validateBodyObj(req.body, Account.loginValidateArr);
   if (validateError) {
     return res.status(400).json(Query.getErrorResult(validateError));
   }
@@ -105,11 +105,11 @@ export const refreshAccessToken = async (req: any, res: Response): Promise<Respo
 };
 
 export const editAccount = async (req: any, res: Response) => {
-  if (!Validate.isObject(req.body)) {
+  if (!isObject(req.body)) {
     return res.status(400).json(Query.getErrorResult("Form parameters not an object, pls submit an object."));
   }
 
-  const validateError = Validate.validateBodyObj(req.body, Account.editValidateArr);
+  const validateError = validateBodyObj(req.body, Account.editValidateArr);
   if (validateError) {
     return res.status(400).json(Query.getErrorResult(validateError));
   }
@@ -133,11 +133,11 @@ export const editAccount = async (req: any, res: Response) => {
 };
 
 export const deleteAccount = async (req: any, res: Response) => {
-  if (!Validate.isObject(req.body)) {
+  if (!isObject(req.body)) {
     return res.status(400).json(Query.getErrorResult("Form parameters not an object, pls submit an object."));
   }
 
-  const validateError = Validate.validateBodyObj(req.body, Account.toggleDeleteValidateArr);
+  const validateError = validateBodyObj(req.body, Account.toggleDeleteValidateArr);
   if (validateError) {
     return res.status(400).json(Query.getErrorResult(validateError));
   }
@@ -157,11 +157,11 @@ export const deleteAccount = async (req: any, res: Response) => {
 };
 
 export const reactivateAccount = async (req: any, res: Response) => {
-  if (!Validate.isObject(req.body)) {
+  if (!isObject(req.body)) {
     return res.status(400).json(Query.getErrorResult("Form parameters not an object, pls submit an object."));
   }
 
-  const validateError = Validate.validateBodyObj(req.body, Account.toggleDeleteValidateArr);
+  const validateError = validateBodyObj(req.body, Account.toggleDeleteValidateArr);
   if (validateError) {
     return res.status(400).json(Query.getErrorResult(validateError));
   }
