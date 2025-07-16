@@ -18,9 +18,5 @@
 			"@fin-tracker/util/*": ["util/*"]
 		}
 	},
-	"include": ["src/**/*"],
-	"tsc-alias": {
-    "resolveFullPaths": true,
-    "verbose": false
-  }
+	"include": ["src/**/*"]
 }
