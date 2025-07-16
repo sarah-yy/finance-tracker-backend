@@ -2164,12 +2164,10 @@ v8-compile-cache-lib@^3.0.1:
   resolved "https://registry.yarnpkg.com/v8-compile-cache-lib/-/v8-compile-cache-lib-3.0.1.tgz#6336e8d71965cb3d35a1bbb7868445a7c05264bf"
   integrity sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==
 
-validate-ts-obj@0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/validate-ts-obj/-/validate-ts-obj-0.0.4.tgz#2ae9fb78fe4096eb540682353686cc45e7cc76bd"
-  integrity sha512-DSt4J0Fp9AE4nspy9oFEgUhZ234wcHWXeUL7Hx9hoGSE0oung8g/Fr3QJqDGlrhdVTbapupkZUXvrX1fUCN33Q==
-  dependencies:
-    ts-node "^10.9.2"
+validate-ts-obj@0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/validate-ts-obj/-/validate-ts-obj-0.0.5.tgz#efe31f613012a0c406ebf9f4148976cf67cbe53a"
+  integrity sha512-Wm3RCWeWVUxkwudAfuxK1QBYsuah66SU11O6tH5tiEu5irnNzpeRGlf5E1s5T8qODPJDzGU3RZb+pG42eJJotw==
 
 vary@^1, vary@~1.1.2:
   version "1.1.2"

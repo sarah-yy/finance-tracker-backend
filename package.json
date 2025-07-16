@@ -21,7 +21,7 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.11.5",
-    "validate-ts-obj": "0.0.4"
+    "validate-ts-obj": "0.0.5"
   },
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
