@@ -3,6 +3,6 @@ import accountRoutes from "./account";
 
 const router = Router();
 
-router.use(accountRoutes);
+router.use("/account", accountRoutes);
 
 export default router;

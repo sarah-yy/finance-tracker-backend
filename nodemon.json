@@ -1,6 +1,6 @@
 {
 	"watch": ["build"],
-	"ext": ".js",
+	"ext": ".mjs",
 	"ignore": [],
-	"exec": "node --experimental-specifier-resolution=node build/index.js"
+	"exec": "node --experimental-modules build/index.mjs"
 }

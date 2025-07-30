@@ -4,10 +4,19 @@
 		"outDir": "build",
 		"esModuleInterop": true,
 		"resolveJsonModule": true,
-		"moduleResolution": "Bundler",
+		"moduleResolution": "node",
 		"allowJs": false,
+		"target": "ES2020",
 		"lib": ["es2015"],
-		"module": "esnext",
-		"noImplicitAny": true
-	}
+		"module": "ESNext",
+		"noImplicitAny": true,
+		"baseUrl": "./src",
+		"paths": {
+			"@fin-tracker/controllers/*": ["controllers/*"],
+			"@fin-tracker/models/*": ["models/*"],
+			"@fin-tracker/services/*": ["services/*"],
+			"@fin-tracker/util/*": ["util/*"]
+		}
+	},
+	"include": ["src/**/*"]
 }
